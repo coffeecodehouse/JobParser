@@ -4,6 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import io.github.coffeecodehouse.personal_jobseeker.parser.domain.Job;
 import org.jsoup.Jsoup;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,38 +21,38 @@ public class FerchauParserTest {
 
   @Test
   public void ferchauParser_executeParseMethod_saveTitle() throws Exception {
-    parser.parse(Jsoup.connect(
+    Job job = parser.parse(Jsoup.connect(
         "https://www.ferchau.com/de/de/karriere/jobs-bewerbung/jobangebote/java-backend-entwickler-99620")
         .userAgent("Mozilla/4.0")
         .get());
-    assertNotNull(parser.getJobTitle());
-    assertFalse(parser.getJobTitle().isEmpty());
+    assertNotNull(job.getJobTitle());
+    assertFalse(job.getJobTitle().isEmpty());
   }
 
   @Test
   public void ferchauParser_executeParseMethod_saveLocation() throws Exception {
-    parser.parse(Jsoup.connect(
+    Job job = parser.parse(Jsoup.connect(
         "https://www.ferchau.com/de/de/karriere/jobs-bewerbung/jobangebote/java-backend-entwickler-99620")
         .userAgent("Mozilla/4.0")
         .get());
-    assertNotNull(parser.getLocation());
-    assertFalse(parser.getLocation().isEmpty());
+    assertNotNull(job.getLocation());
+    assertFalse(job.getLocation().isEmpty());
   }
 
   @Test
   public void ferchauParser_executeParseMethod_saveJobTasks() throws Exception {
-    parser.parse(Jsoup.connect(
+    Job job = parser.parse(Jsoup.connect(
         "https://www.ferchau.com/de/de/karriere/jobs-bewerbung/jobangebote/senior-developer-java-jee-159193")
         .get());
-    assertNotNull(parser.getJobTasks());
+    assertNotNull(job.getJobTasks());
   }
 
   @Test
   public void ferchauParser_executeParseMethod_saveRequirements() throws Exception {
-    parser.parse(Jsoup.connect(
+    Job job = parser.parse(Jsoup.connect(
         "https://www.ferchau.com/de/de/karriere/jobs-bewerbung/jobangebote/senior-developer-java-jee-159193")
         .get());
-    assertNotNull(parser.getRequirements());
+    assertNotNull(job.getRequirements());
   }
 
 
