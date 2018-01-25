@@ -4,7 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import io.github.coffeecodehouse.personal_jobseeker.parser.domain.Job;
+import io.github.coffeecodehouse.personal_jobseeker.parser.domain.JobTitle;
 import org.jsoup.Jsoup;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +21,7 @@ public class FerchauParserTest {
 
   @Test
   public void ferchauParser_executeParseMethod_saveTitle() throws Exception {
-    Job job = parser.parse(Jsoup.connect(
+    JobTitle job = parser.parse(Jsoup.connect(
         "https://www.ferchau.com/de/de/karriere/jobs-bewerbung/jobangebote/java-backend-entwickler-99620")
         .userAgent("Mozilla/4.0")
         .get());
@@ -31,7 +31,7 @@ public class FerchauParserTest {
 
   @Test
   public void ferchauParser_executeParseMethod_saveLocation() throws Exception {
-    Job job = parser.parse(Jsoup.connect(
+    JobTitle job = parser.parse(Jsoup.connect(
         "https://www.ferchau.com/de/de/karriere/jobs-bewerbung/jobangebote/java-backend-entwickler-99620")
         .userAgent("Mozilla/4.0")
         .get());
@@ -41,7 +41,7 @@ public class FerchauParserTest {
 
   @Test
   public void ferchauParser_executeParseMethod_saveJobTasks() throws Exception {
-    Job job = parser.parse(Jsoup.connect(
+    JobTitle job = parser.parse(Jsoup.connect(
         "https://www.ferchau.com/de/de/karriere/jobs-bewerbung/jobangebote/senior-developer-java-jee-159193")
         .get());
     assertNotNull(job.getJobTasks());
@@ -49,7 +49,7 @@ public class FerchauParserTest {
 
   @Test
   public void ferchauParser_executeParseMethod_saveRequirements() throws Exception {
-    Job job = parser.parse(Jsoup.connect(
+    JobTitle job = parser.parse(Jsoup.connect(
         "https://www.ferchau.com/de/de/karriere/jobs-bewerbung/jobangebote/senior-developer-java-jee-159193")
         .get());
     assertNotNull(job.getRequirements());

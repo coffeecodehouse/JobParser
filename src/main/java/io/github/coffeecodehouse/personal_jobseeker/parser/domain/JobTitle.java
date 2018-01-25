@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 
 @Entity
-public class Job {
+public class JobTitle {
 
   @Id
   private Long id;
@@ -22,7 +22,7 @@ public class Job {
   private List<String> jobTasks;
 
 
-  public Job() {
+  public JobTitle() {
   }
 
   public Long getId() {
@@ -63,5 +63,17 @@ public class Job {
 
   public void setJobTasks(List<String> jobTasks) {
     this.jobTasks = jobTasks;
+  }
+
+  @Override
+  public String toString() {
+    final StringBuffer sb = new StringBuffer("JobTitle{");
+    sb.append("id=").append(id);
+    sb.append(", location='").append(location).append('\'');
+    sb.append(", jobTitle='").append(jobTitle).append('\'');
+    sb.append(", requirements=").append(requirements);
+    sb.append(", jobTasks=").append(jobTasks);
+    sb.append('}');
+    return sb.toString();
   }
 }
